@@ -1,0 +1,38 @@
+class Osoba:
+    def __init__(self, ime, prezime):
+        self.ime = ime
+        self.prezime = prezime
+        
+    def __repr__(self):
+        return f"Osoba {self.ime} {self.prezime}"
+
+def NajduzePrezime(listaOsoba):
+    najduze = listaOsoba[0]
+    for osoba in listaOsoba:
+        if len(osoba.prezime)>len(najduze.prezime):
+            najduze = osoba
+    return najduze
+   
+def istiInicijali(listaOsoba):
+    listaIstiInicijali=[]
+    for osoba in listaOsoba:
+        if osoba.ime[0]==osoba.prezime[0]:
+            listaIstiInicijali.append(osoba)
+            
+    return listaIstiInicijali
+
+osobe = []
+nastavi = "y"
+while nastavi == "y":
+    ime = input("Unesite ime osobe: ")
+    prezime = input("Unesite prezime osobe: ")
+    o = Osoba(ime, prezime)
+    osobe.append(o)
+    nastavi = input("za dalje unesite y :")
+
+osobanajduzeprezime = NajduzePrezime(osobe)
+osobeIstiInicijali = istiInicijali(osobe)
+
+print("Osoba sa najduzim prezimenom je:",osobanajduzeprezime)
+print("Osobe sa istim inicijalima su:",osobeIstiInicijali)
+        
